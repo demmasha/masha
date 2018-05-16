@@ -1,0 +1,12 @@
+# cat privat.json | jq '.[] | select (.ccy=="USD")'
+a=$(cat privat.json | jq '.[] | select (.ccy=="USD") | .sale' | sed 's\"\\g')
+#2016demmasha@gmail.com"
+echo -e "курс USD= $a" | mutt -s "USD" 2016demmasha@gmail.com 
+file="kurs.data"
+> $file
+echo "курс доллара(продажа)"
+b=$(date)
+echo  "$b"
+echo "$a ($d)"
+echo $a>$file
+

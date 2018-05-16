@@ -1,0 +1,10 @@
+# cat privat.json | jq '.[] | select (.ccy=="USD")'
+b=$(cat privat.json | jq '.[] | select (.ccy=="USD") | .sale' | sed 's\"\\g')
+#2016demmasha@gmail.com"
+echo -e "курс USD= $b" | mutt -s "USD" 2016demmasha@gmail.com
+file="file2"
+echo -e "$b" >file
+echo "$b"
+[ "$(diff -q file kurs.data)" ] && echo -e " курс валют изменился: $b" | mutt -s"курс валют" 2016demmasha@gmail.com || echo "курс валют остался прежним"
+
+
